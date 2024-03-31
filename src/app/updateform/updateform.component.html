@@ -1,0 +1,21 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      <ion-label position="floating">Назва кафедри: </ion-label>
+      <ion-input [value]="cafedra.name" #InputName></ion-input>
+    </ion-card-title>
+    <ion-card-subtitle>
+      <ion-label position="floating">Завідувач кафедри: </ion-label>
+      <ion-input [value]="cafedra.head" #InputHead></ion-input>
+    </ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-label position="floating">Кількість викладачів на кафедрі: </ion-label>
+      <ion-input [value]="cafedra.num_teachers" #InputNum></ion-input>
+      <ion-label position="floating">Адреса кафедри: </ion-label>
+      <ion-input [value]="cafedra.address" #InputAddress></ion-input>
+  </ion-card-content>
+
+  <ion-button (click)="save(InputName.value, InputHead.value, InputNum.value, InputAddress.value)">Зберігти</ion-button>
+</ion-card>

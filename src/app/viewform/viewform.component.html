@@ -1,0 +1,20 @@
+<app-myform (cafedraAdded)="addCafedra($event)">
+</app-myform>
+
+<ion-card *ngFor="let cafedra of cafedras; let i=index">
+    <ion-card-header>
+        <ion-card-title>{{cafedra.name}}</ion-card-title>
+        <ion-card-subtitle>Завідувач кафедри {{cafedra.head}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+        Адреса: {{cafedra.address}}
+        Кількість викладачів: {{cafedra.num_teachers}}
+        <h2>Викладачі</h2>
+        <ion-item *ngFor="let teacher_list of cafedra.teacher_list">
+        {{teacher_list}}
+        </ion-item>
+    </ion-card-content>
+    <ion-button (click)="update()">Редагувати</ion-button>
+    <app-updateform [cafedra]="cafedra" [show]="show_update" *ngIf="show_update" (showChange)="showUp($event)" (authorCange)="update_save($event, i)"></app-updateform>
+</ion-card>
