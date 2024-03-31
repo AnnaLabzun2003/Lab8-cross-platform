@@ -1,0 +1,59 @@
+<form [formGroup]="cafedraForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Кафедри</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floationg">Назва кафедри</ion-label>
+        <ion-input id="cafedra-name" type="text" formControlName="cafedraName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floationg">ПІП завідувача кафедри</ion-label>
+        <ion-input id="cafedra-head" type="text" formControlName="cafedraHead"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floationg">Кількість викладачів</ion-label>
+        <ion-input id="cafedra-numTeacher" type="number" formControlName="cafedraNum_teachers"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floationg">Адреса кафедри</ion-label>
+        <ion-input id="cafedra-address" type="text" formControlName="cafedraAddress"></ion-input>
+      </ion-item>
+
+      <ion-card formArrayName="teacher_list">
+        <ion-card-header>
+          <ion-card-title>Викладачі</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="tertiary" (click)="addTeacher()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Додати викладача
+          </ion-button>
+
+          <ion-item *ngFor="let book of getControls(); let i=index">
+            <ion-input type="text" formControlName={{i}} placeholder="ПІП виклдача"></ion-input>
+            <ion-button color="tertiary"(click)="deleteTeacher(i)">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              Видалити
+            </ion-button>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+
+
+
+    </ion-card-content>
+
+
+  </ion-card>
+
+<ion-button type="submit" color="mycolor" expand="block" fill="outline" [disabled]="!cafedraForm.valid">
+  Submit
+</ion-button>
+
+</form>
